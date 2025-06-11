@@ -72,6 +72,7 @@
             color: #222;
         }
     </style>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <div class="mdc-card fade-in">
@@ -80,21 +81,21 @@
             请选择你的网络名称，输入密码和Blinker密钥
         </div>
         <form action="/setap" method="post" autocomplete="off">
-            <label>网络名称: </label>
+            <label style="margin-bottom:8px;">网络名称: </label>
             <select class="mdc-custom-select" name="ssid">
                 )" + ssid_list + R"(
             </select>
             <label class="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon" style="margin-bottom:0;">
                 <span class="mdc-text-field__ripple"></span>
-                <input class="mdc-text-field__input" type="password" name="pass" required minlength="8" autocomplete="off" aria-label="网络密码">
-                <span class="mdc-floating-label">网络密码</span>
+                <input class="mdc-text-field__input" id="wifi-password" type="password" name="pass" required minlength="8" autocomplete="off" aria-label="网络密码">
+                <span class="mdc-floating-label" id="wifi-password-label">网络密码</span>
                 <span class="mdc-line-ripple"></span>
                 <i class="material-icons mdc-text-field__icon" tabindex="0" role="button" id="toggle-pass">visibility_off</i>
             </label>
             <label class="mdc-text-field mdc-text-field--filled" style="margin-bottom:0;">
                 <span class="mdc-text-field__ripple"></span>
-                <input class="mdc-text-field__input" type="text" name="auth" required autocomplete="off" aria-label="点灯密钥">
-                <span class="mdc-floating-label">点灯密钥</span>
+                <input class="mdc-text-field__input" id="blinker-auth" type="text" name="auth" required autocomplete="off" aria-label="点灯密钥">
+                <span class="mdc-floating-label" id="blinker-auth-label">点灯密钥</span>
                 <span class="mdc-line-ripple"></span>
             </label>
             <button class="mdc-button mdc-button--raised" type="submit">
@@ -116,15 +117,25 @@
                 toggle.textContent = "visibility_off";
             }
         });
-        document.querySelectorAll('.mdc-text-field__input').forEach(input => {
-            input.addEventListener('focus', (e) => {
-                e.target.parentNode.classList.add('focus');
-            });
-            input.addEventListener('blur', (e) => {
-                e.target.parentNode.classList.remove('focus');
-            });
-        });
+
+        function activateMaterialField(inputSelector, labelSelector) {
+            const input = document.getElementById(inputSelector);
+            const label = document.getElementById(labelSelector);
+            function check() {
+                if (input.value) {
+                    label.classList.add('mdc-floating-label--float-above');
+                } else {
+                    label.classList.remove('mdc-floating-label--float-above');
+                }
+            }
+            input.addEventListener('focus', check);
+            input.addEventListener('input', check);
+            input.addEventListener('blur', check);
+            check();
+        }
+
+        activateMaterialField('wifi-password', 'wifi-password-label');
+        activateMaterialField('blinker-auth', 'blinker-auth-label');
     </script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </body>
 </html>
