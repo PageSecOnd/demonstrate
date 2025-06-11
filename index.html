@@ -1,207 +1,130 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>系统测试中</title>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=0">
+    <title>网络设置</title>
+    <link rel="stylesheet" href="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.css">
     <style>
-        :root {
-            --primary-color: #6200ee;
-            --primary-dark: #3700b3;
-            --secondary-color: #03dac6;
-            --error-color: #b00020;
-            --surface-color: #ffffff;
-            --background-color: #f5f5f5;
-            --on-primary: #ffffff;
-            --on-surface: #000000;
-            --on-surface-secondary: rgba(0, 0, 0, 0.6);
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--background-color);
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
             min-height: 100vh;
-            color: var(--on-surface);
-        }
-
-        .card {
-            background-color: var(--surface-color);
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: fadeInUp 0.5s ease-out forwards;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        @keyframes fadeInUp {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .icon-container {
-            background-color: rgba(98, 0, 238, 0.1);
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            margin: 0 auto 24px;
-            animation: pulse 2s infinite;
+            justify-content: center;
+            color: #fff;
         }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(98, 0, 238, 0.4);
-            }
-            70% {
-                transform: scale(1.05);
-                box-shadow: 0 0 0 10px rgba(98, 0, 238, 0);
-            }
-            100% {
-                transform: scale(1);
-                box-shadow: 0 0 0 0 rgba(98, 0, 238, 0);
-            }
-        }
-
-        .material-icons {
-            font-size: 48px;
-            color: var(--primary-color);
-        }
-
-        h1 {
-            font-size: 24px;
-            font-weight: 500;
-            margin-bottom: 16px;
-        }
-
-        p {
-            font-size: 16px;
-            color: var(--on-surface-secondary);
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .progress-container {
+        .mdc-card {
             width: 100%;
-            height: 4px;
-            background-color: rgba(0, 0, 0, 0.1);
-            border-radius: 2px;
-            margin-bottom: 24px;
-            overflow: hidden;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 32px 24px 24px 24px;
+            border-radius: 16px;
+            box-shadow: 0 6px 24px rgba(0,0,0,0.13);
+            background: rgba(255,255,255,0.09);
+            backdrop-filter: blur(4px);
         }
-
-        .progress-bar {
-            height: 100%;
-            background-color: var(--primary-color);
-            border-radius: 2px;
-            width: 45%;
-            animation: progressAnimation 2s ease-in-out infinite;
+        .mdc-typography--headline5 {
+            color: #fff;
+            margin-bottom: 10px;
         }
-
-        @keyframes progressAnimation {
-            0% {
-                transform: translateX(-100%);
-            }
-            100% {
-                transform: translateX(220%);
-            }
+        .mdc-typography--subtitle2, label {
+            color: #d5e3f7;
         }
-
-        .button {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 16px;
-            height: 36px;
-            border-radius: 18px;
-            background-color: var(--primary-color);
-            color: var(--on-primary);
-            font-size: 14px;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        .mdc-button {
+            margin-top: 24px;
+            width: 100%;
+        }
+        form > .mdc-text-field {
+            width: 100%;
+            margin-bottom: 18px;
+        }
+        .mdc-text-field--filled .mdc-floating-label {
+            color: #fff;
+        }
+        .mdc-text-field--filled {
+            background: rgba(255,255,255,0.13);
+        }
+        .fade-in {
+            animation: fadeIn 0.8s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(24px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        select.mdc-custom-select {
+            width: 100%;
+            padding: 12px 16px;
+            margin-bottom: 18px;
+            border-radius: 8px;
             border: none;
             outline: none;
-            text-decoration: none;
+            background: rgba(255,255,255,0.13);
+            color: #fff;
+            font-size: 16px;
+            appearance: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
-
-        .button:hover {
-            background-color: var(--primary-dark);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        select.mdc-custom-select:focus {
+            box-shadow: 0 0 0 2px #2575fc;
         }
-
-        .button:active {
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .button .material-icons {
-            font-size: 18px;
-            margin-right: 8px;
-            color: var(--on-primary);
-        }
-
-        .footer-text {
-            font-size: 12px;
-            color: var(--on-surface-secondary);
-            margin-top: 24px;
-        }
-
-        @media (max-width: 600px) {
-            .card {
-                padding: 24px 16px;
-            }
-            
-            h1 {
-                font-size: 20px;
-            }
-            
-            p {
-                font-size: 14px;
-            }
+        option {
+            color: #222;
         }
     </style>
 </head>
 <body>
-    <div class="card">
-        <div class="icon-container">
-            <span class="material-icons">build</span>
+    <div class="mdc-card fade-in">
+        <h2 class="mdc-typography mdc-typography--headline5">Wi-Fi 设置</h2>
+        <div class="mdc-typography mdc-typography--subtitle2" style="margin-bottom:18px;">
+            请选择你的网络名称，输入密码和Blinker密钥
         </div>
-        <h1>系统正在测试中</h1>
-        <p>我们正在对系统进行测试和优化，以提供更好的用户体验。请稍后再试或联系我们的支持团队获取更多信息。</p>
-        
-        <div class="progress-container">
-            <div class="progress-bar"></div>
-        </div>
-        
-        <button class="button" onclick="window.location.href='mailto:jamson@fighton.onmicrosoft.com'">
-            <span class="material-icons">email</span>
-            联系支持
-        </button>
-        
-        <p class="footer-text">预计完成时间: 2077年</p>
+        <form action="/setap" method="post" autocomplete="off">
+            <label>网络名称: </label>
+            <select class="mdc-custom-select" name="ssid">
+                )" + ssid_list + R"(
+            </select>
+            <label class="mdc-text-field mdc-text-field--filled mdc-text-field--with-trailing-icon" style="margin-bottom:0;">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" type="password" name="pass" required minlength="8" autocomplete="off" aria-label="网络密码">
+                <span class="mdc-floating-label">网络密码</span>
+                <span class="mdc-line-ripple"></span>
+                <i class="material-icons mdc-text-field__icon" tabindex="0" role="button" id="toggle-pass">visibility_off</i>
+            </label>
+            <label class="mdc-text-field mdc-text-field--filled" style="margin-bottom:0;">
+                <span class="mdc-text-field__ripple"></span>
+                <input class="mdc-text-field__input" type="text" name="auth" required autocomplete="off" aria-label="点灯密钥">
+                <span class="mdc-floating-label">点灯密钥</span>
+                <span class="mdc-line-ripple"></span>
+            </label>
+            <button class="mdc-button mdc-button--raised" type="submit">
+                <span class="mdc-button__label">保存设置</span>
+            </button>
+        </form>
     </div>
+    <script src="https://unpkg.com/material-components-web@latest/dist/material-components-web.min.js"></script>
+    <script>
+        mdc.autoInit();
+        const passInput = document.querySelector('input[name="pass"]');
+        const toggle = document.getElementById('toggle-pass');
+        toggle.addEventListener('click', () => {
+            if (passInput.type === "password") {
+                passInput.type = "text";
+                toggle.textContent = "visibility";
+            } else {
+                passInput.type = "password";
+                toggle.textContent = "visibility_off";
+            }
+        });
+        document.querySelectorAll('.mdc-text-field__input').forEach(input => {
+            input.addEventListener('focus', (e) => {
+                e.target.parentNode.classList.add('focus');
+            });
+            input.addEventListener('blur', (e) => {
+                e.target.parentNode.classList.remove('focus');
+            });
+        });
+    </script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </body>
 </html>
